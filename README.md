@@ -1,35 +1,42 @@
-Вот шаги, которые вам нужно выполнить для настройки бота:
+# Telegram to Discord Bot
 
-1. **Создание бота в Telegram:**
-   - Откройте Telegram и найдите @BotFather.
-   - Напишите ему /start и следуйте инструкциям для создания нового бота.
-   - После создания бота, BotFather предоставит вам токен. Сохраните его, он понадобится для подключения к API Telegram.
+This bot forwards messages from a Telegram channel to a Discord channel.
 
-2. **Получение API ID и API Hash от Telegram:**
-   - Перейдите на https://my.telegram.org/auth и войдите в свою учетную запись.
-   - Перейдите в раздел API development tools и создайте новое приложение.
-   - После создания приложения, вы получите API ID и API Hash. Сохраните их.
+## Setup
 
-3. **Создание бота в Discord:**
-   - Перейдите на https://discord.com/developers/applications и войдите в свою учетную запись.
-   - Нажмите на кнопку "New Application" и введите имя для вашего приложения.
-   - Перейдите в раздел Bot и нажмите на кнопку "Add Bot".
-   - После создания бота, вы получите токен. Сохраните его.
+Here are the steps you need to follow to set up the bot:
 
-4. **Получение ID канала Discord:**
-   - Откройте Discord и перейдите в настройки (иконка шестеренки внизу слева).
-   - В разделе "Advanced" включите "Developer Mode".
-   - Теперь вы можете нажать правой кнопкой мыши на любой канал и выбрать "Copy ID" для получения его ID.
+1. **Create a bot in Telegram:**
+    - Open Telegram and find @BotFather.
+    - Send him a /start message and follow the instructions to create a new bot.
+    - After creating the bot, BotFather will provide you with a token. Save it, you will need it to connect to the Telegram API.
 
-5. **Установка необходимых библиотек Python:**
-   - Установите библиотеки `discord.py` и `Telethon` с помощью pip:
-     ```
-     pip install discord.py
-     pip install Telethon
-     ```
+2. **Get API ID and API Hash from Telegram:**
+    - Go to https://my.telegram.org/auth and log in to your account.
+    - Go to the API development tools section and create a new application.
+    - After creating the application, you will get an API ID and API Hash. Save them.
 
-6. **Запуск бота:**
-   - Замените `'your_telegram_api_id'`, `'your_telegram_api_hash'`, `'your_telegram_token'`, `'your_discord_token'`, `'your_discord_channel_id'` и `'telegram_channel_id'` в коде на соответствующие значения.
-   - Запустите код.
+3. **Create a bot in Discord:**
+    - Go to https://discord.com/developers/applications and log in to your account.
+    - Click on the "New Application" button and enter a name for your application.
+    - Go to the Bot section and click on the "Add Bot" button.
+    - After creating the bot, you will get a token. Save it.
 
-Пожалуйста, обратите внимание, что этот код является простым примером и не обрабатывает все возможные случаи. Вам потребуется дополнительная обработка ошибок и управление различными типами медиафайлов.
+4. **Get Discord Channel ID:**
+    - Open Discord and go to settings (the gear icon at the bottom left).
+    - In the "Advanced" section, enable "Developer Mode".
+    - Now you can right-click on any channel and select "Copy ID" to get its ID.
+
+5. **Install necessary Python libraries:**
+    - Install the discord.py and Telethon libraries using pip:
+
+    ```
+    pip install discord.py
+    pip install Telethon
+    ```
+
+6. **Run the bot:**
+    - Replace 'api_id', 'api_hash', 'discord_token', 'discord_channel_id' and 'telegram_channel_id' in the code with the corresponding values.
+    - Run the code.
+
+Please note that this code is a simple example and does not handle all possible cases. You will need additional error handling and management of different types of media files.
