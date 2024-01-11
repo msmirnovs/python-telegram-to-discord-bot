@@ -1,46 +1,41 @@
 import discord
 from telethon.sync import TelegramClient
-from telethon.tl.functions.messages import GetHistoryRequest
+from telethon import events
 
 # Telegram setup
-api_id = 'your_telegram_api_id'
-api_hash = 'your_telegram_api_hash'
-token = 'your_telegram_token'
-
+api_id = #
+api_hash = '#'
 client = TelegramClient('anon', api_id, api_hash)
 
 # Discord setup
-discord_token = 'your_discord_token'
-discord_channel_id = 'your_discord_channel_id'
-discord_client = discord.Client()
+discord_token = '#'
+discord_channel_id = #
+intents = discord.Intents.default()  # Create a new Intents instance without privileged intents
+discord_client = discord.Client(intents=intents)  # Pass the intents to the Client
 
 @discord_client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(discord_client))
+    await client.start()
 
-    await client.start(bot_token=token)
-    channel = await client.get_entity('telegram_channel_id')
+@client.on(events.NewMessage(chats=(-100#)))
+async def new_message_handler(event):
+    message = event.message
 
-    # Get the last 10 messages
-    messages = await client(GetHistoryRequest(
-        peer=channel,
-        limit=10,
-        offset_date=None,
-        offset_id=0,
-        max_id=0,
-        min_id=0,
-        add_offset=0,
-        hash=0))
+    print(f"Received a new message: {message.message}")
 
-    for message in messages.messages:
+    try:
         if message.media is not None:
             # If the message has media, download it
-            await client.download_media(message=message, file='file')
-            await discord_client.get_channel(discord_channel_id).send(file=discord.File('file'))
+            file_path = await client.download_media(message=message, file='file')
+            if file_path is not None:
+                await discord_client.get_channel(discord_channel_id).send(file=discord.File(file_path))
+            else:
+                print("Failed to download media")
         else:
             # If the message is just text, send it
             await discord_client.get_channel(discord_channel_id).send(message.message)
-
-    await client.disconnect()
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 discord_client.run(discord_token)
