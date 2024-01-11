@@ -9,7 +9,7 @@ client = TelegramClient('anon', api_id, api_hash)
 
 # Discord setup
 discord_token = '#' # replace with your discord bot token
-discord_channel_id = 123... # replace with your discord channel id
+discord_channel_id = 123... # replace with your discord channel id (e.g #general)
 intents = discord.Intents.default()  # Create a new Intents instance without privileged intents
 discord_client = discord.Client(intents=intents)  # Pass the intents to the Client
 
