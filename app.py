@@ -3,13 +3,13 @@ from telethon.sync import TelegramClient
 from telethon import events
 
 # Telegram setup
-api_id = #
-api_hash = '#'
+api_id = 123... # replace with your app id
+api_hash = '#' # replace with your api hash
 client = TelegramClient('anon', api_id, api_hash)
 
 # Discord setup
-discord_token = '#'
-discord_channel_id = #
+discord_token = '#' # replace with your discord bot token
+discord_channel_id = 123... # replace with your discord channel id
 intents = discord.Intents.default()  # Create a new Intents instance without privileged intents
 discord_client = discord.Client(intents=intents)  # Pass the intents to the Client
 
@@ -18,7 +18,7 @@ async def on_ready():
     print('We have logged in as {0.user}'.format(discord_client))
     await client.start()
 
-@client.on(events.NewMessage(chats=(-100...)))
+@client.on(events.NewMessage(chats=(-100...))) # replace with your channel ID
 async def new_message_handler(event):
     message = event.message
 
