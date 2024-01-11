@@ -18,7 +18,7 @@ async def on_ready():
     print('We have logged in as {0.user}'.format(discord_client))
     await client.start()
 
-@client.on(events.NewMessage(chats=(-100#)))
+@client.on(events.NewMessage(chats=(-100...)))
 async def new_message_handler(event):
     message = event.message
 
@@ -29,7 +29,8 @@ async def new_message_handler(event):
             # If the message has media, download it
             file_path = await client.download_media(message=message, file='file')
             if file_path is not None:
-                await discord_client.get_channel(discord_channel_id).send(file=discord.File(file_path))
+                # Send both the text and the media in one message
+                await discord_client.get_channel(discord_channel_id).send(content=message.message, file=discord.File(file_path))
             else:
                 print("Failed to download media")
         else:
@@ -37,5 +38,6 @@ async def new_message_handler(event):
             await discord_client.get_channel(discord_channel_id).send(message.message)
     except Exception as e:
         print(f"An error occurred: {e}")
+
 
 discord_client.run(discord_token)
